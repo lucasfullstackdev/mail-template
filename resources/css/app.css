@@ -1,0 +1,6 @@
+.mail-body { height: calc(100vh - 100px); }
+
+.footer { height: 100px; }
+
+.footer h5,
+.mail-body p { font-size: 0.9em; }
