@@ -19,5 +19,7 @@ const mix = require('laravel-mix');
 mix
     .copy('node_modules/bootstrap/dist/css/bootstrap.min.css', 'public/css/bootstrap.min.css')
     .copy('node_modules/bootstrap/dist/css/bootstrap.min.css.map', 'public/css/bootstrap.min.css.map')
+    .copy('resources/css/app.css', 'public/css/main.css')
+    .copy('resources/image/logomark.min.svg', 'public/image/logomark.min.svg')
     .version();
     
