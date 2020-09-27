@@ -7,55 +7,74 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Sobre a aplicação
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este é apenas um exemplo simplificado de como é possível desenvolver uma arquitetura simples, mas muito útil, para o envio de e-mails baseados em template blade, aproveitando assim toda a componentização da engine blade, evitando redundâncias e arquivos muito extensos.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## O que foi utilizado
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **[PHP ^7.3](https://www.php.net/)**
+- **[Composer](https://getcomposer.org/)**
+- **[Laravel 8x](https://laravel.com/docs/8.x)**
+- **[Artisan CLI](https://laravel.com/docs/8.x/artisan)**
+- **[Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)**
+- **[Font awesome](https://fontawesome.com/)**
 
-## Learning Laravel
+## Arquitetura para construção de e-mail
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Views/
+    - mail/
+        - base-model/
+            - company.blade.php
+        - model/
+            - new-user.blade.php
+        - abstract-mail.blade.php
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Abstract-mail.blade.php
+Arquivo no topo da hierarquiva de templates blade. Aqui estão as definições mais básicas e comuns para todos os modelos de e-mail, tais quais:
+- Estrutura Html
+- Importação dos arquivos CSS necessários, como  por exemplo, bootstrap e font awesome
 
-## Laravel Sponsors
+## Company.blade.php
+Este arquivo exemplifica os modelos de e-mail que podem variar conforme a necessidade do e-mail, por exemplo, a estrutura de um e-mail corporativo pode ser (e geralmente é) diferente de um e-mail que tem como objetivo enviar uma notificação ou um relatório.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## new-user.blade.php
+Este arquivo exemplifica o conteúdo (o corpo) do modelo company.
 
-### Premium Partners
+# Conclusão
+Esta arquitetura nos permite:
+- Criar N modelos novos, acompanhando assim as necessidades da empresa
+- Para cada modelo, podemos criar N corpo de texto
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+Tudo isso nos permite por exemplo, criar com grande facilidades os seguintes e-mail:
 
-## Contributing
+- Company
+	- Boas-vindas ao usuário
+	- Alteração de senha
+	- Notificação de Login
+	- Notificação de aniversário
+- Newsletter
+	- Promoções
+	- Novidades
+- Report
+	- Balanço comercial
+	- Relatório de logs
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Como você pode ver, seguindo esta proposta é possível ter uma gestão mais eficaz dos seus e-mails, podendo assim fazer alterações com maior facilidade.
 
-## Code of Conduct
+## Setup
+1. Instale o [composer](https://getcomposer.org/download/)
+2. Clone este repositório
+3. Acesse a raiz do projeto e rode os comandos:
+```
+	composer install
+	npm install
+	npm run dev
+	cp .env.example .env
+	php artisan key:generate
+```
+4. Após a instalação de todas as dependências necessárias, execute o comando `php artisan serve`
+5. O projeto deve estar disponível no endereco: [localhost:8000](http://localhost:8000/) 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Considerações finais
+Qualquer dúvida ou sugestão, entre em contato pelo e-mail: lucas.fullstack.dev@gmail.com
