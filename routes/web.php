@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SendCustomMail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,3 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::view('/', 'mail.model.new-user');
+// Route::get('/', function(){
+//     
+// });
+
+Route::get('/', [SendCustomMail::class, 'show']);
